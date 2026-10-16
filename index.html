@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Salma & Amr Wedding Invitation">
+<title>Salma & Amr | Wedding Invitation</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Parisienne&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+
+<style>
+/* Opening screen safety fixes */
+.opening-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 1s ease, visibility 1s ease;
+}
+
+.opening-screen.opened {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.invitation {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease, visibility 1s ease;
+}
+
+.invitation.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.light-button {
+    cursor: pointer;
+    position: relative;
+    z-index: 10;
+}
+
+.flame {
+    opacity: 0;
+    visibility: hidden;
+    transform-origin: center bottom;
+    transition: opacity .4s ease;
+}
+
+.flame.active {
+    opacity: 1;
+    visibility: visible;
+    animation: candleFlicker 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes candleFlicker {
+    from { transform: scale(1) rotate(-3deg); }
+    to { transform: scale(1.08) rotate(3deg); }
+}
+
+.light-burst.active {
+    opacity: 1;
+    transform: scale(1.5);
+}
+
+.gallery-item img,
+.gallery-overlay {
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<!-- OPENING SCREEN -->
+<section class="opening-screen" id="openingScreen">
+    <div class="opening-overlay"></div>
+    <div class="gold-particles"></div>
+
+    <div class="opening-content">
+        <p class="opening-small-text">YOU ARE INVITED</p>
+
+        <h1 class="opening-names">Salma <span>&</span> Amr</h1>
+        <p class="opening-date">04 · 12 · 2026</p>
+
+        <div class="candle-area">
+            <div class="candle-glow"></div>
+
+            <div class="candle">
+                <div class="flame" id="flame">
+                    <div class="flame-inner"></div>
+                </div>
+
+                <div class="candle-wax">
+                    <div class="wax-drip drip-one"></div>
+                    <div class="wax-drip drip-two"></div>
+                    <div class="wax-drip drip-three"></div>
+                </div>
+
+                <div class="candle-holder">
+                    <div class="holder-top"></div>
+                    <div class="holder-neck"></div>
+                    <div class="holder-body"></div>
+                    <div class="holder-base"></div>
+                </div>
+            </div>
+        </div>
+
+        <button class="light-button" id="lightButton" type="button">
+            <span>LIGHT THE CANDLE</span>
+        </button>
+
+        <p class="opening-hint">A little light, a beautiful beginning</p>
+    </div>
+
+    <div class="light-burst" id="lightBurst"></div>
+</section>
+
+
+<!-- MAIN INVITATION -->
+<main class="invitation" id="invitation">
+
+    <!-- NAVBAR -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container">
+
+            <a href="#home" class="brand" aria-label="Salma and Amr">
+                <span class="brand-letter">S</span>
+                <span class="brand-line"></span>
+                <span class="brand-letter">A</span>
+            </a>
+
+            <nav class="nav-menu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#story" class="nav-link">Our Story</a>
+                <a href="#details" class="nav-link">Details</a>
+                <a href="#gallery" class="nav-link">Gallery</a>
+                <a href="#rsvp" class="nav-link">RSVP</a>
+            </nav>
+
+            <button class="music-button" id="musicButton" type="button" aria-label="Toggle music">
+                <i class="fa-solid fa-music"></i>
+            </button>
+
+            <button class="mobile-menu-button" id="mobileMenuButton" type="button" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#home">Home</a>
+            <a href="#story">Our Story</a>
+            <a href="#details">Details</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#rsvp">RSVP</a>
+        </div>
+    </header>
+
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-background"></div>
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+            <p class="hero-top-text">TOGETHER WITH OUR FAMILIES</p>
+
+            <h2 class="hero-names">Salma <span>&</span> Amr</h2>
+
+            <div class="hero-divider">
+                <span></span>
+                <i class="fa-regular fa-heart"></i>
+                <span></span>
+            </div>
+
+            <p class="hero-subtitle">ARE GETTING MARRIED</p>
+            <p class="hero-date">FRIDAY · DECEMBER 4 · 2026</p>
+
+            <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                    <strong id="days">00</strong><span>DAYS</span>
+                </div>
+                <div class="countdown-item">
+                    <strong id="hours">00</strong><span>HOURS</span>
+                </div>
+                <div class="countdown-item">
+                    <strong id="minutes">00</strong><span>MINUTES</span>
+                </div>
+                <div class="countdown-item">
+                    <strong id="seconds">00</strong><span>SECONDS</span>
+                </div>
+            </div>
+
+            <a href="#details" class="hero-button">
+                <span>DISCOVER OUR DAY</span>
+            </a>
+        </div>
+
+        <div class="hero-scroll">
+            <span>SCROLL TO EXPLORE</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+
+    <!-- INTRO -->
+    <section class="intro-section">
+        <div class="section-container">
+            <p class="section-label">A NEW CHAPTER</p>
+
+            <h2 class="section-title">
+                Two hearts,<br>
+                one beautiful story
+            </h2>
+
+            <div class="gold-line"></div>
+
+            <p class="intro-text">
+                With joyful hearts and grateful souls,
+                we invite you to celebrate the beginning
+                of our forever together
+            </p>
+        </div>
+    </section>
+
+
+    <!-- OUR STORY -->
+    <section class="story-section" id="story">
+        <div class="section-container">
+
+            <div class="section-heading">
+                <p class="section-label">OUR STORY</p>
+                <h2 class="section-title">How it all began</h2>
+            </div>
+
+            <div class="story-grid">
+                <article class="story-card">
+                    <div class="story-image">
+                        <img src="./WhatsApp Image 2026-10-04 at 3.13.07 PM (2).jpeg" alt="Our first meeting">
+                        <span class="story-year">2019</span>
+                    </div>
+                    <div class="story-content">
+                        <h3>The First Hello</h3>
+                        <p>A simple meeting that quietly became the beginning of something beautiful</p>
+                    </div>
+                </article>
+
+                <article class="story-card">
+                    <div class="story-image">
+                        <img src="./WhatsApp Image 2026-10-04 at 3.13.07 PM.jpeg" alt="Our first date">
+                        <span class="story-year">2020</span>
+                    </div>
+                    <div class="story-content">
+                        <h3>The First Date</h3>
+                        <p>One evening, countless conversations, and memories we still treasure</p>
+                    </div>
+                </article>
+
+                <article class="story-card">
+                    <div class="story-image">
+                        <img src="./WhatsApp Image 2026-10-04 at 3.13.07 PM (1).jpeg" alt="Our promise">
+                        <span class="story-year">2024</span>
+                    </div>
+                    <div class="story-content">
+                        <h3>The Promise</h3>
+                        <p>A promise to choose each other, today and every day that follows</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- COUPLE -->
+    <section class="couple-section">
+        <div class="couple-background"></div>
+        <div class="couple-overlay"></div>
+
+        <div class="couple-content">
+            <p class="section-label">OUR FOREVER</p>
+            <h2>Salma <span>&</span> Amr</h2>
+            <p>Together is our favorite place to be</p>
+        </div>
+    </section>
+
+
+    <!-- DETAILS -->
+    <section class="details-section" id="details">
+        <div class="section-container">
+
+            <div class="section-heading">
+                <p class="section-label">SAVE THE DATE</p>
+                <h2 class="section-title">Wedding Details</h2>
+                <p class="section-description">
+                    Everything you need to know about our special day
+                </p>
+            </div>
+
+            <div class="details-grid">
+                <div class="detail-card">
+                    <div class="detail-icon"><i class="fa-regular fa-calendar"></i></div>
+                    <span class="detail-label">DATE</span>
+                    <h3>December 4, 2026</h3>
+                    <p>Friday</p>
+                </div>
+
+                <div class="detail-card">
+                    <div class="detail-icon"><i class="fa-regular fa-clock"></i></div>
+                    <span class="detail-label">TIME</span>
+                    <h3>2:00 PM</h3>
+                    <p>Reception starts at 2:00 PM</p>
+                </div>
+
+                <div class="detail-card">
+                    <div class="detail-icon"><i class="fa-solid fa-location-dot"></i></div>
+                    <span class="detail-label">VENUE</span>
+                    <h3>Military Production Club</h3>
+                    <p>Helwan El Balad, Helwan, Cairo</p>
+                </div>
+
+                <div class="detail-card">
+                    <div class="detail-icon"><i class="fa-solid fa-shirt"></i></div>
+                    <span class="detail-label">DRESS CODE</span>
+                    <h3>Formal Elegance</h3>
+                    <p>Come dressed to celebrate</p>
+                </div>
+            </div>
+
+            <a href="https://www.google.com/maps/search/?api=1&query=Military+Production+Club%2C+R7XV%2BFV3%2C+Helwan+El+Balad%2C+Helwan%2C+Cairo+Governorate+4030001"
+               target="_blank" rel="noopener noreferrer" class="location-button">
+                <i class="fa-solid fa-location-arrow"></i>
+                <span>GET DIRECTIONS</span>
+            </a>
+        </div>
+    </section>
+
+
+    <!-- SCHEDULE -->
+    <section class="schedule-section">
+        <div class="section-container">
+
+            <div class="section-heading">
+                <p class="section-label">JOIN US</p>
+                <h2 class="section-title">Our Day</h2>
+            </div>
+
+            <div class="schedule">
+                <div class="schedule-item">
+                    <div class="schedule-icon"><i class="fa-solid fa-champagne-glasses"></i></div>
+                    <div class="schedule-info">
+                        <span>02:00 PM</span>
+                        <h3>Welcome</h3>
+                        <p>Welcome drinks and reception</p>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="schedule-icon"><i class="fa-solid fa-utensils"></i></div>
+                    <div class="schedule-info">
+                        <span>03:00 PM</span>
+                        <h3>Dinner</h3>
+                        <p>Dinner and joyful conversations</p>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="schedule-icon"><i class="fa-regular fa-heart"></i></div>
+                    <div class="schedule-info">
+                        <span>04:00 PM</span>
+                        <h3>Ceremony</h3>
+                        <p>The moment we say forever</p>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="schedule-icon"><i class="fa-solid fa-music"></i></div>
+                    <div class="schedule-info">
+                        <span>05:00 PM</span>
+                        <h3>Celebration</h3>
+                        <p>Music, dancing and celebration</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- GALLERY -->
+    <section class="gallery-section" id="gallery">
+        <div class="section-container">
+
+            <div class="section-heading">
+                <p class="section-label">OUR MEMORIES</p>
+                <h2 class="section-title">A Glimpse Of Us</h2>
+                <p class="section-description">
+                    Moments we will always keep close to our hearts
+                </p>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item gallery-large">
+                    <img src="./WhatsApp Image 2026-10-04 at 3.14.52 PM (1).jpeg" alt="Salma and Amr">
+                    <div class="gallery-overlay"><i class="fa-solid fa-expand"></i></div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="./WhatsApp Image 2026-10-04 at 3.14.52 PM.jpeg" alt="Wedding memory">
+                    <div class="gallery-overlay"><i class="fa-solid fa-expand"></i></div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="./WhatsApp Image 2026-10-05 at 9.28.23 AM.jpeg" alt="Wedding memory">
+                    <div class="gallery-overlay"><i class="fa-solid fa-expand"></i></div>
+                </div>
+
+                <div class="gallery-item gallery-wide">
+                    <img src="./WhatsApp Image 2026-10-04 at 3.17.50 PM.jpeg" alt="Wedding memory">
+                    <div class="gallery-overlay"><i class="fa-solid fa-expand"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- RSVP -->
+    <section class="rsvp-section" id="rsvp">
+        <div class="rsvp-background"></div>
+        <div class="rsvp-overlay"></div>
+
+        <div class="rsvp-container">
+            <div class="rsvp-content">
+                <p class="section-label">WE WOULD LOVE TO HAVE YOU</p>
+                <h2>Will you join us?</h2>
+                <p>Please let us know if you will be celebrating this special day with us</p>
+            </div>
+
+            <form class="rsvp-form" id="rsvpForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="guestName">Full Name</label>
+                        <input type="text" id="guestName" name="guestName" placeholder="Your name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="guestCount">Number of Guests</label>
+                        <select id="guestCount" name="guestCount" required>
+                            <option value="">Select</option>
+                            <option value="1">1 Guest</option>
+                            <option value="2">2 Guests</option>
+                            <option value="3">3 Guests</option>
+                            <option value="4">4 Guests</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Will you attend?</label>
+                    <div class="attendance-options">
+                        <label class="attendance-option">
+                            <input type="radio" name="attendance" value="yes" required>
+                            <span>Yes, I'll Be There</span>
+                        </label>
+                        <label class="attendance-option">
+                            <input type="radio" name="attendance" value="no">
+                            <span>Sorry, I Can't</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Leave us a message"></textarea>
+                </div>
+
+                <button type="submit" class="rsvp-button"><span>SEND RSVP</span></button>
+            </form>
+        </div>
+    </section>
+
+
+    <!-- FINAL -->
+    <section class="final-section">
+        <div class="final-background"></div>
+        <div class="final-overlay"></div>
+
+        <div class="final-content">
+            <p class="section-label">WE CAN'T WAIT TO CELEBRATE WITH YOU</p>
+            <h2>Salma <span>&</span> Amr</h2>
+            <div class="final-date">04 · 12 · 2026</div>
+
+            <div class="final-divider">
+                <span></span>
+                <i class="fa-regular fa-heart"></i>
+                <span></span>
+            </div>
+
+            <p>With love, always</p>
+        </div>
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span>S</span>
+                <i class="fa-regular fa-heart"></i>
+                <span>A</span>
+            </div>
+
+            <p>Salma & Amr · 2026</p>
+
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#story">Our Story</a>
+                <a href="#details">Details</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#rsvp">RSVP</a>
+            </div>
+        </div>
+    </footer>
+
+</main>
+
+
+<!-- MUSIC -->
+<audio id="weddingMusic" loop>
+    <source src="./Albumaty.Com_hsyn_algsmy_ana_walkmr.mp3" type="audio/mpeg">
+</audio>
+
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close image">
+        <i class="fa-solid fa-xmark"></i>
+    </button>
+    <img id="lightboxImage" src="" alt="Wedding photo">
+</div>
+
+
+<!-- JAVASCRIPT -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const openingScreen = document.getElementById("openingScreen");
+    const lightButton = document.getElementById("lightButton");
+    const invitation = document.getElementById("invitation");
+    const flame = document.getElementById("flame");
+    const lightBurst = document.getElementById("lightBurst");
+
+    // Candle button: light the flame, then reveal the invitation.
+    if (openingScreen && lightButton && invitation) {
+        lightButton.addEventListener("click", function () {
+            if (lightButton.dataset.opening === "true") return;
+            lightButton.dataset.opening = "true";
+
+            if (flame) flame.classList.add("active");
+            if (lightBurst) lightBurst.classList.add("active");
+
+            setTimeout(function () {
+                openingScreen.classList.add("opened");
+                invitation.classList.add("visible");
+                openingScreen.style.pointerEvents = "none";
+            }, 1200);
+        });
+    }
+
+    // Mobile menu
+    const mobileButton = document.getElementById("mobileMenuButton");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    if (mobileButton && mobileMenu) {
+        mobileButton.addEventListener("click", function () {
+            mobileMenu.classList.toggle("open");
+            mobileButton.classList.toggle("active");
+        });
+
+        mobileMenu.querySelectorAll("a").forEach(function (link) {
+            link.addEventListener("click", function () {
+                mobileMenu.classList.remove("open");
+                mobileButton.classList.remove("active");
+            });
+        });
+    }
+
+    // Music control
+    const music = document.getElementById("weddingMusic");
+    const musicButton = document.getElementById("musicButton");
+
+    if (music && musicButton) {
+        musicButton.addEventListener("click", async function () {
+            try {
+                if (music.paused) {
+                    await music.play();
+                    musicButton.classList.add("playing");
+                } else {
+                    music.pause();
+                    musicButton.classList.remove("playing");
+                }
+            } catch (error) {
+                console.error("Music playback failed:", error);
+            }
+        });
+    }
+
+    // Gallery lightbox
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightboxImage");
+    const lightboxClose = document.getElementById("lightboxClose");
+
+    if (lightbox && lightboxImage && lightboxClose) {
+        document.querySelectorAll(".gallery-item img").forEach(function (img) {
+            img.addEventListener("click", function () {
+                lightboxImage.src = img.src;
+                lightboxImage.alt = img.alt;
+                lightbox.classList.add("active");
+            });
+        });
+
+        document.querySelectorAll(".gallery-overlay").forEach(function (overlay) {
+            overlay.addEventListener("click", function () {
+                const img = overlay.parentElement.querySelector("img");
+                if (!img) return;
+
+                lightboxImage.src = img.src;
+                lightboxImage.alt = img.alt;
+                lightbox.classList.add("active");
+            });
+        });
+
+        function closeLightbox() {
+            lightbox.classList.remove("active");
+            lightboxImage.src = "";
+        }
+
+        lightboxClose.addEventListener("click", closeLightbox);
+
+        lightbox.addEventListener("click", function (event) {
+            if (event.target === lightbox) closeLightbox();
+        });
+
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Escape") closeLightbox();
+        });
+    }
+
+    // Countdown: December 4, 2026 at 2 PM, local time.
+    const weddingDate = new Date(2026, 11, 4, 14, 0, 0);
+    let countdownTimer;
+
+    function updateCountdown() {
+        const countdown = document.getElementById("countdown");
+        if (!countdown) return;
+
+        const difference = weddingDate.getTime() - Date.now();
+
+        if (difference <= 0) {
+            countdown.innerHTML = "<p>Today is our special day! ❤️</p>";
+            if (countdownTimer) clearInterval(countdownTimer);
+            return;
+        }
+
+        const values = {
+            days: Math.floor(difference / 86400000),
+            hours: Math.floor((difference / 3600000) % 24),
+            minutes: Math.floor((difference / 60000) % 60),
+            seconds: Math.floor((difference / 1000) % 60)
+        };
+
+        Object.entries(values).forEach(function ([id, value]) {
+            const element = document.getElementById(id);
+            if (element) element.textContent = String(value).padStart(2, "0");
+        });
+    }
+
+    updateCountdown();
+    countdownTimer = setInterval(updateCountdown, 1000);
+
+    // RSVP demonstration. This does not send or save responses.
+    const rsvpForm = document.getElementById("rsvpForm");
+
+    if (rsvpForm) {
+        rsvpForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+            if (!rsvpForm.reportValidity()) return;
+
+            const guestName = document.getElementById("guestName").value.trim();
+            const attendance = rsvpForm.querySelector('input[name="attendance"]:checked');
+
+            if (!attendance) return;
+
+            if (attendance.value === "yes") {
+                alert("Thank you, " + guestName + "! We can't wait to celebrate with you ❤️");
+            } else {
+                alert("Thank you for letting us know, " + guestName + ".");
+            }
+        });
+    }
+
+});
+</script>
+
+</body>
+</html>
