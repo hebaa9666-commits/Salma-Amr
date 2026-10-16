@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="style.css">
 
 <style>
-/* Opening screen safety fixes */
+/* Opening screen */
 .opening-screen {
     position: fixed;
     inset: 0;
@@ -47,11 +47,26 @@
     z-index: 10;
 }
 
+/* Candle flame positioning */
+.candle-area {
+    position: relative;
+}
+
+.candle {
+    position: relative;
+}
+
 .flame {
+    position: absolute;
+    left: 50%;
+    bottom: 100%;
+    margin-bottom: -2px;
+    transform: translateX(-50%);
+    transform-origin: center bottom;
     opacity: 0;
     visibility: hidden;
-    transform-origin: center bottom;
-    transition: opacity .4s ease;
+    z-index: 10;
+    pointer-events: none;
 }
 
 .flame.active {
@@ -61,8 +76,12 @@
 }
 
 @keyframes candleFlicker {
-    from { transform: scale(1) rotate(-3deg); }
-    to { transform: scale(1.08) rotate(3deg); }
+    from {
+        transform: translateX(-50%) scale(1) rotate(-3deg);
+    }
+    to {
+        transform: translateX(-50%) scale(1.08) rotate(3deg);
+    }
 }
 
 .light-burst.active {
@@ -185,16 +204,23 @@
 
             <div class="countdown" id="countdown">
                 <div class="countdown-item">
-                    <strong id="days">00</strong><span>DAYS</span>
+                    <strong id="days">00</strong>
+                    <span>DAYS</span>
                 </div>
+
                 <div class="countdown-item">
-                    <strong id="hours">00</strong><span>HOURS</span>
+                    <strong id="hours">00</strong>
+                    <span>HOURS</span>
                 </div>
+
                 <div class="countdown-item">
-                    <strong id="minutes">00</strong><span>MINUTES</span>
+                    <strong id="minutes">00</strong>
+                    <span>MINUTES</span>
                 </div>
+
                 <div class="countdown-item">
-                    <strong id="seconds">00</strong><span>SECONDS</span>
+                    <strong id="seconds">00</strong>
+                    <span>SECONDS</span>
                 </div>
             </div>
 
@@ -246,6 +272,7 @@
                         <img src="./WhatsApp Image 2026-10-04 at 3.13.07 PM (2).jpeg" alt="Our first meeting">
                         <span class="story-year">2019</span>
                     </div>
+
                     <div class="story-content">
                         <h3>The First Hello</h3>
                         <p>A simple meeting that quietly became the beginning of something beautiful</p>
@@ -257,6 +284,7 @@
                         <img src="./WhatsApp Image 2026-10-04 at 3.13.07 PM.jpeg" alt="Our first date">
                         <span class="story-year">2020</span>
                     </div>
+
                     <div class="story-content">
                         <h3>The First Date</h3>
                         <p>One evening, countless conversations, and memories we still treasure</p>
@@ -268,6 +296,7 @@
                         <img src="./WhatsApp Image 2026-10-04 at 3.13.07 PM (1).jpeg" alt="Our promise">
                         <span class="story-year">2024</span>
                     </div>
+
                     <div class="story-content">
                         <h3>The Promise</h3>
                         <p>A promise to choose each other, today and every day that follows</p>
@@ -305,28 +334,36 @@
 
             <div class="details-grid">
                 <div class="detail-card">
-                    <div class="detail-icon"><i class="fa-regular fa-calendar"></i></div>
+                    <div class="detail-icon">
+                        <i class="fa-regular fa-calendar"></i>
+                    </div>
                     <span class="detail-label">DATE</span>
                     <h3>December 4, 2026</h3>
                     <p>Friday</p>
                 </div>
 
                 <div class="detail-card">
-                    <div class="detail-icon"><i class="fa-regular fa-clock"></i></div>
+                    <div class="detail-icon">
+                        <i class="fa-regular fa-clock"></i>
+                    </div>
                     <span class="detail-label">TIME</span>
                     <h3>2:00 PM</h3>
                     <p>Reception starts at 2:00 PM</p>
                 </div>
 
                 <div class="detail-card">
-                    <div class="detail-icon"><i class="fa-solid fa-location-dot"></i></div>
+                    <div class="detail-icon">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
                     <span class="detail-label">VENUE</span>
                     <h3>Military Production Club</h3>
                     <p>Helwan El Balad, Helwan, Cairo</p>
                 </div>
 
                 <div class="detail-card">
-                    <div class="detail-icon"><i class="fa-solid fa-shirt"></i></div>
+                    <div class="detail-icon">
+                        <i class="fa-solid fa-shirt"></i>
+                    </div>
                     <span class="detail-label">DRESS CODE</span>
                     <h3>Formal Elegance</h3>
                     <p>Come dressed to celebrate</p>
@@ -334,7 +371,9 @@
             </div>
 
             <a href="https://www.google.com/maps/search/?api=1&query=Military+Production+Club%2C+R7XV%2BFV3%2C+Helwan+El+Balad%2C+Helwan%2C+Cairo+Governorate+4030001"
-               target="_blank" rel="noopener noreferrer" class="location-button">
+               target="_blank"
+               rel="noopener noreferrer"
+               class="location-button">
                 <i class="fa-solid fa-location-arrow"></i>
                 <span>GET DIRECTIONS</span>
             </a>
@@ -353,7 +392,9 @@
 
             <div class="schedule">
                 <div class="schedule-item">
-                    <div class="schedule-icon"><i class="fa-solid fa-champagne-glasses"></i></div>
+                    <div class="schedule-icon">
+                        <i class="fa-solid fa-champagne-glasses"></i>
+                    </div>
                     <div class="schedule-info">
                         <span>02:00 PM</span>
                         <h3>Welcome</h3>
@@ -362,7 +403,9 @@
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-icon"><i class="fa-solid fa-utensils"></i></div>
+                    <div class="schedule-icon">
+                        <i class="fa-solid fa-utensils"></i>
+                    </div>
                     <div class="schedule-info">
                         <span>03:00 PM</span>
                         <h3>Dinner</h3>
@@ -371,7 +414,9 @@
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-icon"><i class="fa-regular fa-heart"></i></div>
+                    <div class="schedule-icon">
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
                     <div class="schedule-info">
                         <span>04:00 PM</span>
                         <h3>Ceremony</h3>
@@ -380,7 +425,9 @@
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-icon"><i class="fa-solid fa-music"></i></div>
+                    <div class="schedule-icon">
+                        <i class="fa-solid fa-music"></i>
+                    </div>
                     <div class="schedule-info">
                         <span>05:00 PM</span>
                         <h3>Celebration</h3>
@@ -407,22 +454,30 @@
             <div class="gallery-grid">
                 <div class="gallery-item gallery-large">
                     <img src="./WhatsApp Image 2026-10-04 at 3.14.52 PM (1).jpeg" alt="Salma and Amr">
-                    <div class="gallery-overlay"><i class="fa-solid fa-expand"></i></div>
+                    <div class="gallery-overlay">
+                        <i class="fa-solid fa-expand"></i>
+                    </div>
                 </div>
 
                 <div class="gallery-item">
                     <img src="./WhatsApp Image 2026-10-04 at 3.14.52 PM.jpeg" alt="Wedding memory">
-                    <div class="gallery-overlay"><i class="fa-solid fa-expand"></i></div>
+                    <div class="gallery-overlay">
+                        <i class="fa-solid fa-expand"></i>
+                    </div>
                 </div>
 
                 <div class="gallery-item">
                     <img src="./WhatsApp Image 2026-10-05 at 9.28.23 AM.jpeg" alt="Wedding memory">
-                    <div class="gallery-overlay"><i class="fa-solid fa-expand"></i></div>
+                    <div class="gallery-overlay">
+                        <i class="fa-solid fa-expand"></i>
+                    </div>
                 </div>
 
                 <div class="gallery-item gallery-wide">
                     <img src="./WhatsApp Image 2026-10-04 at 3.17.50 PM.jpeg" alt="Wedding memory">
-                    <div class="gallery-overlay"><i class="fa-solid fa-expand"></i></div>
+                    <div class="gallery-overlay">
+                        <i class="fa-solid fa-expand"></i>
+                    </div>
                 </div>
             </div>
         </div>
@@ -467,6 +522,7 @@
                             <input type="radio" name="attendance" value="yes" required>
                             <span>Yes, I'll Be There</span>
                         </label>
+
                         <label class="attendance-option">
                             <input type="radio" name="attendance" value="no">
                             <span>Sorry, I Can't</span>
@@ -479,7 +535,9 @@
                     <textarea id="message" name="message" rows="4" placeholder="Leave us a message"></textarea>
                 </div>
 
-                <button type="submit" class="rsvp-button"><span>SEND RSVP</span></button>
+                <button type="submit" class="rsvp-button">
+                    <span>SEND RSVP</span>
+                </button>
             </form>
         </div>
     </section>
@@ -531,7 +589,7 @@
 
 
 <!-- MUSIC -->
-<audio id="weddingMusic" loop>
+<audio id="weddingMusic" loop preload="auto">
     <source src="./Albumaty.Com_hsyn_algsmy_ana_walkmr.mp3" type="audio/mpeg">
 </audio>
 
@@ -555,24 +613,80 @@ document.addEventListener("DOMContentLoaded", function () {
     const flame = document.getElementById("flame");
     const lightBurst = document.getElementById("lightBurst");
 
-    // Candle button: light the flame, then reveal the invitation.
-    if (openingScreen && lightButton && invitation) {
-        lightButton.addEventListener("click", function () {
-            if (lightButton.dataset.opening === "true") return;
-            lightButton.dataset.opening = "true";
+    const music = document.getElementById("weddingMusic");
+    const musicButton = document.getElementById("musicButton");
 
-            if (flame) flame.classList.add("active");
-            if (lightBurst) lightBurst.classList.add("active");
+    let invitationOpened = false;
+    let countdownTimer = null;
 
-            setTimeout(function () {
+    // Start music when the invitation opens.
+    async function playMusic() {
+        if (!music) return;
+
+        try {
+            await music.play();
+
+            if (musicButton) {
+                musicButton.classList.add("playing");
+                musicButton.setAttribute("aria-label", "Pause music");
+            }
+        } catch (error) {
+            // If autoplay is blocked, the user can press the music button.
+            console.log("Browser blocked automatic music playback.");
+        }
+    }
+
+    // Candle interaction.
+    function openInvitation() {
+        if (invitationOpened) return;
+        invitationOpened = true;
+
+        if (flame) {
+            flame.classList.add("active");
+        }
+
+        if (lightBurst) {
+            lightBurst.classList.add("active");
+        }
+
+        // Try to start audio during the click interaction.
+        // This improves autoplay compatibility on mobile browsers.
+        playMusic();
+
+        setTimeout(function () {
+            if (openingScreen) {
                 openingScreen.classList.add("opened");
-                invitation.classList.add("visible");
                 openingScreen.style.pointerEvents = "none";
-            }, 1200);
+            }
+
+            if (invitation) {
+                invitation.classList.add("visible");
+            }
+
+            // Try again as the invitation becomes visible.
+            playMusic();
+
+        }, 1200);
+    }
+
+    if (lightButton) {
+        lightButton.addEventListener("click", openInvitation);
+    }
+
+    // Music play/pause button.
+    if (music && musicButton) {
+        musicButton.addEventListener("click", async function () {
+            if (music.paused) {
+                await playMusic();
+            } else {
+                music.pause();
+                musicButton.classList.remove("playing");
+                musicButton.setAttribute("aria-label", "Play music");
+            }
         });
     }
 
-    // Mobile menu
+    // Mobile menu.
     const mobileButton = document.getElementById("mobileMenuButton");
     const mobileMenu = document.getElementById("mobileMenu");
 
@@ -590,27 +704,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Music control
-    const music = document.getElementById("weddingMusic");
-    const musicButton = document.getElementById("musicButton");
-
-    if (music && musicButton) {
-        musicButton.addEventListener("click", async function () {
-            try {
-                if (music.paused) {
-                    await music.play();
-                    musicButton.classList.add("playing");
-                } else {
-                    music.pause();
-                    musicButton.classList.remove("playing");
-                }
-            } catch (error) {
-                console.error("Music playback failed:", error);
-            }
-        });
-    }
-
-    // Gallery lightbox
+    // Gallery lightbox.
     const lightbox = document.getElementById("lightbox");
     const lightboxImage = document.getElementById("lightboxImage");
     const lightboxClose = document.getElementById("lightboxClose");
@@ -643,17 +737,20 @@ document.addEventListener("DOMContentLoaded", function () {
         lightboxClose.addEventListener("click", closeLightbox);
 
         lightbox.addEventListener("click", function (event) {
-            if (event.target === lightbox) closeLightbox();
+            if (event.target === lightbox) {
+                closeLightbox();
+            }
         });
 
         document.addEventListener("keydown", function (event) {
-            if (event.key === "Escape") closeLightbox();
+            if (event.key === "Escape") {
+                closeLightbox();
+            }
         });
     }
 
-    // Countdown: December 4, 2026 at 2 PM, local time.
+    // Countdown to December 4, 2026 at 2:00 PM local time.
     const weddingDate = new Date(2026, 11, 4, 14, 0, 0);
-    let countdownTimer;
 
     function updateCountdown() {
         const countdown = document.getElementById("countdown");
@@ -663,7 +760,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (difference <= 0) {
             countdown.innerHTML = "<p>Today is our special day! ❤️</p>";
-            if (countdownTimer) clearInterval(countdownTimer);
+
+            if (countdownTimer) {
+                clearInterval(countdownTimer);
+            }
+
             return;
         }
 
@@ -676,30 +777,43 @@ document.addEventListener("DOMContentLoaded", function () {
 
         Object.entries(values).forEach(function ([id, value]) {
             const element = document.getElementById(id);
-            if (element) element.textContent = String(value).padStart(2, "0");
+
+            if (element) {
+                element.textContent = String(value).padStart(2, "0");
+            }
         });
     }
 
     updateCountdown();
     countdownTimer = setInterval(updateCountdown, 1000);
 
-    // RSVP demonstration. This does not send or save responses.
+    // RSVP demonstration.
+    // This displays a message but does not send or save responses.
     const rsvpForm = document.getElementById("rsvpForm");
 
     if (rsvpForm) {
         rsvpForm.addEventListener("submit", function (event) {
             event.preventDefault();
+
             if (!rsvpForm.reportValidity()) return;
 
             const guestName = document.getElementById("guestName").value.trim();
-            const attendance = rsvpForm.querySelector('input[name="attendance"]:checked');
+            const attendance = rsvpForm.querySelector(
+                'input[name="attendance"]:checked'
+            );
 
             if (!attendance) return;
 
             if (attendance.value === "yes") {
-                alert("Thank you, " + guestName + "! We can't wait to celebrate with you ❤️");
+                alert(
+                    "Thank you, " + guestName +
+                    "! We can't wait to celebrate with you ❤️"
+                );
             } else {
-                alert("Thank you for letting us know, " + guestName + ".");
+                alert(
+                    "Thank you for letting us know, " +
+                    guestName + "."
+                );
             }
         });
     }
